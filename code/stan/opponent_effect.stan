@@ -17,9 +17,9 @@ data {
 
 
 parameters {
-  real<lower=0> sigma_b;               // sd of mu_beta
+  real<lower=0> sigma_b;               // sd of betas
   real<lower=0> sigma_g;               // sd of gamma
-  real<lower=0> sigma_a;               // sd of mu_beta
+  real<lower=0> sigma_a;               // sd of alphas
   
   real mu_beta;                        // population average winner effect
   
