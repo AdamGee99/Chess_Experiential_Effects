@@ -26,7 +26,7 @@ source("/home/adamgee/scratch/code/helper functions/plot_templates.R")
 set_cmdstan_path("/home/adamgee/R/x86_64-pc-linux-gnu-library/4.4/cmdstan")
 
 ### load in the data to use
-data_path = "/home/adamgee/scratch/data/lichessBots/1700-1900_with_bots/"
+data_path = "/home/adamgee/scratch/data/lichess1700-1900_with_bots"
 save_path = "/home/adamgee/scratch/results/human_bot_results/1700-1900/"
 
 files = list.files(data_path)
@@ -69,7 +69,7 @@ init_data = tidy_games %>%
   filter(focal_result != 0.5) %>%
   ungroup() %>%
   ###filtering out rematches and big elo differences
-  mutate(opp = ifelse(focal_white == 1, Black, White)) #%>%
+  mutate(opp = ifelse(focal_white == 1, Black, White)) %>%
   filter(lag(opp) != opp) %>% #filter out rematches
   #filter(sign(elo_diff) != sign(lag(elo_diff))) %>%
   filter(abs(elo_diff) <= 200) #trying to mimic player games - they hardly ever play people rated 200 away from them 
