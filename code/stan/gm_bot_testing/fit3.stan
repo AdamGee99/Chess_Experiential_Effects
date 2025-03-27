@@ -24,7 +24,7 @@ parameters {
   vector[3] nu;                        // location of beta[ , j]
   
   vector<lower=0>[3] tau;              // sd of alpha, beta, gamma2 (rating) effect, scale of beta[ , j]
-  cholesky_factor_corr[2] L_Omega;     // Cholesky of correlation of beta[ , j]
+  cholesky_factor_corr[3] L_Omega;     // Cholesky of correlation of beta[ , j]
   
   real<lower=0> sigma_g1;              // sd of gamma1
   
