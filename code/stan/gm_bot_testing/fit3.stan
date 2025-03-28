@@ -1,5 +1,6 @@
 // March, 26 2025 -- FIT 3
 // same as fit2 but adding correlation between winner effect and rating effect
+// if we want this correlation then I think the rating effect needs to be a random effect in the way we define our model...
 
 data {
   int<lower=0> N;                      // the number of games
@@ -50,7 +51,7 @@ model {
   
   /// fourth layer ///
   gamma1 ~ normal(0, sigma_g1);        // prior for gamma1
-  to_vector(beta_std) ~ normal(0, 1);  // beta[ , j] ~ multi_normal(nu, Sigma)
+  to_vector(beta_std) ~ normal(0, 1);  // beta[ , j] ~ multi_normal(nu, Sigma) - to_vector() puts it into a column vector so you can give a normal(0,1) prior to all entries 
   
   vector[N] pred;
   for(i in 1:N){

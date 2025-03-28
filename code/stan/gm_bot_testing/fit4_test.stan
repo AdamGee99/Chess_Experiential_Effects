@@ -25,7 +25,6 @@ parameters {
   cholesky_factor_corr[2] L_Omega;     // Cholesky of correlation of beta[ , j]
   real<lower=0> sigma_g1;              // sd of gamma1
   
-  
   /// fourth layer ///
   matrix[2, J] beta_std;               // standard beta (beta - nu) / Sigma - why are we standardizing here...
   real gamma1;                         // effect of colour
