@@ -1,4 +1,4 @@
-// Model March, 26 2025 -- FIT 3
+// March, 26 2025 -- FIT 3
 // same as fit2 but adding correlation between winner effect and rating effect
 
 data {
@@ -15,23 +15,17 @@ parameters {
   /// first layer ///
   real<lower=0> sigma_1;               // sd of mu_beta
   
-  
   /// second layer ///
   real mu_beta;                        // population average winner effect
   
-  
   /// third layer ///
   vector[3] nu;                        // location of beta[ , j]
-  
   vector<lower=0>[3] tau;              // sd of alpha, beta, gamma2 (rating) effect, scale of beta[ , j]
   cholesky_factor_corr[3] L_Omega;     // Cholesky of correlation of beta[ , j]
-  
   real<lower=0> sigma_g1;              // sd of gamma1
-  
   
   /// fourth layer ///
   real gamma1;                         // colour effect
-  
   matrix[3, J] beta_std;               // standard beta (beta - nu) / Sigma
 }
 
@@ -43,11 +37,8 @@ model {
   /// first layer ///
   sigma_1 ~ normal(0, 1);              // prior for sd of mu_beta
   
-  
   /// second layer ///
   mu_beta ~ normal(0, sigma_1);        // prior for population winner effect
-  
-  
   
   /// third layer ///
   nu[1] ~ normal(0, 1);                // prior for mean of player effect
@@ -55,15 +46,11 @@ model {
   nu[3] ~ normal(0, 1);                // prior for mean of rating effect
   tau ~ inv_gamma(1, 1);               // prior for sd of player, colour, rating effects
   L_Omega ~ lkj_corr_cholesky(2);      // prior for correlation matrix
-  
   sigma_g1 ~ normal(0, 1);             // prior for sd of colour effect
-  
   
   /// fourth layer ///
   gamma1 ~ normal(0, sigma_g1);        // prior for gamma1
-  
   to_vector(beta_std) ~ normal(0, 1);  // beta[ , j] ~ multi_normal(nu, Sigma)
-  
   
   vector[N] pred;
   for(i in 1:N){

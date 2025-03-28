@@ -1,4 +1,4 @@
-// Model March 26, 2025 -- FIT 1
+// March 26, 2025 -- FIT 1
 // for the bots
 // same as paper fit, but no winner effect
 
