@@ -3,6 +3,8 @@
 .RData
 .Ruserdata
 *.exe
+*.doc
+*.docx
 Thesis.Rproj
 data/
 results/
