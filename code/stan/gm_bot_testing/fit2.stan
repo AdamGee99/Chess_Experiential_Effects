@@ -33,7 +33,7 @@ parameters {
 }
 
 transformed parameters {
-  matrix[2, J] beta = rep_matrix(nu, J) + quad_form_diag(L_Omega, tau) * beta_std;
+  matrix[2, J] beta = rep_matrix(nu, J) + diag_pre_multiply(L_Omega, tau) * beta_std; // use diag_pre_multiply() so it's sd instead of variance
 }
 
 model {
