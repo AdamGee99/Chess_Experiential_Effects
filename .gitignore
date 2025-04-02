@@ -5,6 +5,7 @@
 *.exe
 *.doc
 *.docx
+*.tmp
 Thesis.Rproj
 data/
 results/
