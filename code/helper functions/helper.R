@@ -28,7 +28,7 @@ get_hist <- function(user, games, prev_n) {
     hist_games <- games |> 
       filter(Username == user) |> 
       mutate(focal_white = ifelse(Username == White, 1, 0)) |> 
-      select(any_of(vars)) |>
+      dplyr::select(any_of(vars)) |>
       mutate(focal_result = case_when(
         (focal_white == 1 & Result == "1-0") ~ 1,
         (focal_white == 0 & Result == "0-1") ~ 1,
@@ -41,7 +41,7 @@ get_hist <- function(user, games, prev_n) {
     hist_games <- games |> 
       filter(Username == user) |> 
       mutate(focal_white = ifelse(Username == White, 1, 0)) |>
-      select(any_of(vars)) |>
+      dplyr::select(any_of(vars)) |>
       mutate(focal_result = case_when(
         (focal_white == 1 & Result == "1-0") ~ 1,
         (focal_white == 0 & Result == "0-1") ~ 1,
