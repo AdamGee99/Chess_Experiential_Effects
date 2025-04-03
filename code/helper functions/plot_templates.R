@@ -60,9 +60,10 @@ theme_single_y_legend <- function(){
       plot.title = element_text(size = title_size),
       axis.text = element_text(size = axis_text_size - 2),
       axis.title = element_text(size = axis_title),
-      legend.text = element_text(size = legend_text),
+      legend.text = element_text(size = 12),
       strip.text = element_text(size = axis_title - 5, 
-                                margin = margin(1.5, 1.5, 2, 1.5))
+                                margin = margin(1.5, 1.5, 2, 1.5)),
+      legend.title = element_blank(),
     )
 }
 
