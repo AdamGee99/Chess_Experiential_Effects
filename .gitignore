@@ -6,6 +6,7 @@
 *.doc
 *.docx
 *.tmp
+*.pdf
 Thesis.Rproj
 data/
 results/
