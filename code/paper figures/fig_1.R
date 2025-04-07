@@ -43,10 +43,16 @@ plot_data = lichess_data %>%
   select(Username, cohort, game, focal_rating)
   
 #plotting
-ggplot(data = plot_data, mapping = aes(x = game, y = focal_rating, colour = Username)) +
+rating_plot = ggplot(data = plot_data, mapping = aes(x = game, y = focal_rating, colour = Username)) +
   geom_line() +
-  labs(x = "Game Number", y = "Rating") + 
+  labs(x = "Games Played", y = "Rating") + 
   theme_single_y_legend()
+rating_plot
+
+#save
+ggsave(plot = rating_plot, 
+       filename = here("results", "paper figures", "fig1.png"), dpi = 1000,
+       height = 6, width = 9)
 
 
 
