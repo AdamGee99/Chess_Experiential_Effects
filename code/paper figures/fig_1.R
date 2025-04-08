@@ -1,4 +1,5 @@
 library(tidyverse)
+library(here)
 
 #helper functions
 source(here("code", "helper functions", "helper.R"))
@@ -33,11 +34,11 @@ plot_data = lichess_data %>%
   arrange(UTCDate, UTCTime, .by_group = TRUE) %>%
   mutate(game = row_number(),
          Username = case_when( #rename magnus and alireza usernames
-           Username == "DrNykterstein" ~ "Magnus Carlsen",
-           Username == "alireza2003" ~ "Alireza Firouzja",
+           Username == "DrNykterstein" ~ "DrNykterstein (Magnus Carlsen)",
+           Username == "alireza2003" ~ "alireza2003 (Alireza Firouzja)",
            .default = Username
          ),
-         Username = factor(Username, levels = c("Magnus Carlsen", "Alireza Firouzja", "BlueGreensun", #for order in legend
+         Username = factor(Username, levels = c("DrNykterstein (Magnus Carlsen)", "alireza2003 (Alireza Firouzja)", "BlueGreensun", #for order in legend
                                                 "SeanBambic", "dewang_007", "larrywheels"))) %>% 
   ungroup() %>%
   select(Username, cohort, game, focal_rating)
@@ -52,7 +53,7 @@ rating_plot
 #save
 ggsave(plot = rating_plot, 
        filename = here("results", "paper figures", "fig1.png"), dpi = 1000,
-       height = 6, width = 9)
+       height = 4.5, width = 10)
 
 
 
